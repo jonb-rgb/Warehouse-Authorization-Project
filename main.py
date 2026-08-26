@@ -4,8 +4,8 @@ employees = [
     {
         "ID": 1,
         "name": "Ryan",
+        "status": "Active",
         "role": "General Manager",
-        "floors": [1, 2, 3],
         "areas": [
             "Frontend",
             "Backend",
@@ -18,8 +18,8 @@ employees = [
     {
         "ID": 2,
         "name": "John",
+        "status": "Active",
         "role": "Operations Manager",
-        "floors": [1, 2],
         "areas": [
             "Frontend",
             "Backend",
@@ -30,8 +30,8 @@ employees = [
     {
         "ID": 3,
         "name": "Sophia",
+        "status": "Active",
         "role": "Frontend Manager",
-        "floors": [1, 2, 3],
         "areas": [
             "Frontend",
             "Offices",
@@ -42,8 +42,8 @@ employees = [
     {
         "ID": 4,
         "name": "Richie",
+        "status": "Active",
         "role": "IT",
-        "floors": [1, 2, 3],
         "areas": [
             "Frontend",
             "Backend",
@@ -54,10 +54,9 @@ employees = [
     {
         "ID": 5,
         "name": "Jacob",
+        "status": "Active",
         "role": "Security",
-        "floors": [1],
         "areas": [
-            "Frontend",
             "Backend",
             "Security Room"
         ]
@@ -65,8 +64,8 @@ employees = [
     {
         "ID": 6,
         "name": "Emily",
+        "status": "Active",
         "role": "Customer Support",
-        "floors": [1, 2],
         "areas": [
             "Frontend",
             "Offices"
@@ -75,8 +74,8 @@ employees = [
     {
         "ID": 7,
         "name": "Josh",
+        "status": "Active",
         "role": "Secretary",
-        "floors": [1, 2],
         "areas": [
             "Frontend"
         ]
@@ -84,8 +83,8 @@ employees = [
     {
         "ID": 8,
         "name": "Mia",
+        "status": "Active",
         "role": "Supervisor",
-        "floors": [1, 2],
         "areas": [
             "Frontend",
             "Backend",
@@ -95,8 +94,8 @@ employees = [
     {
         "ID": 9,
         "name": "Hector",
+        "status": "Active",
         "role": "Janitor",
-        "floors": [1, 2],
         "areas": [
             "Frontend",
             "Backend",
@@ -107,10 +106,42 @@ employees = [
     {
         "ID": 10,
         "name": "Maria",
+        "status": "Active",
         "role": "Associate",
-        "floors": [1],
+        "areas": [
+            "Backend"
+        ]
+    },
+    {
+        "ID": 11,
+        "name": "Steven",
+        "status": "Active",
+        "role": "Janitor",
+        "areas": [
+            "Backend"
+        ]
+    },
+    {
+        "ID": 12,
+        "name": "Olivia",
+        "status": "Inactive",
+        "role": "Associate",
         "areas": [
             "Backend"
         ]
     }
 ]
+
+# employee search by ID
+
+employee_id = int(input("Enter employee ID: "))
+
+employee_exists = False
+
+for employee in employees:
+    if employee["ID"] == employee_id:
+        employee_exists = True
+        print(employee)
+
+if employee_exists == False:
+    print("Employee does not exist.")

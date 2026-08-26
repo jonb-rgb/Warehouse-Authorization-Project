@@ -1,3 +1,20 @@
+
+Warehouse_floors = {
+    1: [
+        "Frontend",
+        "Backend",
+        "Storage",
+        "Security room"
+    ],
+    2: [
+        "Offices",
+        "Managers Office"
+    ],
+    3: [
+        "Server Room"
+    ]
+}
+
 roles = [
     "Associate",
     "Janitor",
@@ -9,20 +26,4 @@ roles = [
     "Frontend Manager",
     "Operations Manager",
     "General Manager",
-]
-
-floors = [
-    1,
-    2,
-    3,
-]
-
-areas = [
-    "Frontend",
-    "Backend",
-    "Offices",
-    "Storage",
-    "Server Room",
-    "Security Room",
-    "Managers Office"
 ]
