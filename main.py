@@ -1,5 +1,6 @@
 print("Warehouse-Authorization-Project")
 
+#list of employees
 employees = [
     {
         "ID": 1,
@@ -132,16 +133,34 @@ employees = [
     }
 ]
 
-# employee search by ID
+#1 originally an employee search by ID
+
+#2 Made it into a 'sign in as employee' program
+
+#Currently a Base authorization program for the warehouse.
 
 employee_id = int(input("Enter employee ID: "))
 
 employee_exists = False
+current_employee = None
 
 for employee in employees:
     if employee["ID"] == employee_id:
         employee_exists = True
         print(employee)
+        if employee["status"] == "Inactive":
+            print(employee['name'] + " is inactive.")
+        else:
+            current_employee = employee
+            print("Welcome, " + current_employee['name'] + ".")
+    else:
+        continue
+    requested_area = input("Where would you like to go? ")
+    if requested_area in current_employee["areas"]:
+        print("Entering..." + requested_area)
+    else:
+        print("Cannot access " + requested_area + ".")
+
 
 if employee_exists == False:
     print("Employee does not exist.")
