@@ -7,13 +7,20 @@ employees = [
         "name": "Ryan",
         "status": "Active",
         "role": "General Manager",
-        "areas": [
+        "allowed_entrances": [
             "Frontend",
             "Backend",
-            "Offices",
-            "Storage",
-            "Server Room",
-            "Managers Office"
+            "Reception door",
+            "Elevator door",
+            "Elevator buttons",
+            "Merge door"
+        ],
+        "areas": [
+            "Storage room",
+            "Server room",
+            "Managers Office",
+            "Offloading area",
+            "Onloading area",
         ]
     },
     {
@@ -21,11 +28,19 @@ employees = [
         "name": "John",
         "status": "Active",
         "role": "Operations Manager",
-        "areas": [
-            "Frontend",
+        "allowed_entrances": [
             "Backend",
+            "Merge door",
+            "Elevator door",
+            "Elevator buttons",
+            "Reception door"
+        ],
+        "areas": [
             "Offices",
-            "Storage"
+            "Storage room",
+            "Security room",
+            "Offloading area",
+            "Onloading area",
         ]
     },
     {
@@ -33,11 +48,16 @@ employees = [
         "name": "Sophia",
         "status": "Active",
         "role": "Frontend Manager",
-        "areas": [
+        "allowed_entrances": [
             "Frontend",
+            "Merge door",
+            "Elevator door",
+            "Elevator buttons",
+            "Reception door"
+        ],
+        "areas": [
             "Offices",
-            "Storage",
-            "Server Room"
+            "Storage room",
         ]
     },
     {
@@ -45,21 +65,28 @@ employees = [
         "name": "Richie",
         "status": "Active",
         "role": "IT",
-        "areas": [
+        "allowed_entrances": [
             "Frontend",
-            "Backend",
-            "Server Room",
-            "Offices"
-        ]
+            "Merge door",
+            "Elevator door",
+            "Elevator buttons",
+            "Reception door"
+        ],
+        "areas": [
+            "Server room",
+            "Offices",
+        ],
     },
     {
         "ID": 5,
         "name": "Jacob",
         "status": "Active",
         "role": "Security",
-        "areas": [
+        "allowed_entrances": [
             "Backend",
-            "Security Room"
+        ],
+        "areas": [
+            "Security room",
         ]
     },
     {
@@ -67,9 +94,14 @@ employees = [
         "name": "Emily",
         "status": "Active",
         "role": "Customer Support",
-        "areas": [
+        "allowed_entrances": [
             "Frontend",
-            "Offices"
+            "Elevator door",
+            "Elevator buttons",
+            "Reception door"
+        ],
+        "areas": [
+            "Offices",
         ]
     },
     {
@@ -77,8 +109,14 @@ employees = [
         "name": "Josh",
         "status": "Active",
         "role": "Secretary",
+        "allowed_entrances": [
+            "Frontend",
+            "Elevator door",
+            "Elevator buttons",
+            "Reception door"
+        ],
         "areas": [
-            "Frontend"
+            "Offices",
         ]
     },
     {
@@ -86,10 +124,17 @@ employees = [
         "name": "Mia",
         "status": "Active",
         "role": "Supervisor",
-        "areas": [
+        "allowed_entrances": [
             "Frontend",
             "Backend",
-            "Offices"
+            "Elevator door",
+            "Elevator buttons",
+            "Reception door"
+        ],
+        "areas": [
+            "Offices",
+            "Offloading area",
+            "Onloading area",
         ]
     },
     {
@@ -97,11 +142,18 @@ employees = [
         "name": "Hector",
         "status": "Active",
         "role": "Janitor",
-        "areas": [
+        "allowed_entrances": [
             "Frontend",
             "Backend",
+            "Elevator door",
+            "Elevator buttons",
+            "Reception door"
+        ],
+        "areas": [
             "Offices",
-            "Storage"
+            "Storage room",
+            "Offloading area",
+            "Onloading area",
         ]
     },
     {
@@ -109,8 +161,11 @@ employees = [
         "name": "Maria",
         "status": "Active",
         "role": "Associate",
+        "allowed_entrances": [
+            "Backend",
+        ],
         "areas": [
-            "Backend"
+            "Onloading area",
         ]
     },
     {
@@ -118,8 +173,12 @@ employees = [
         "name": "Steven",
         "status": "Active",
         "role": "Janitor",
-        "areas": [
+        "allowed_entrances": [
             "Backend"
+        ],
+        "areas": [
+            "Offloading area",
+            "Onloading area",
         ]
     },
     {
@@ -127,8 +186,41 @@ employees = [
         "name": "Olivia",
         "status": "Inactive",
         "role": "Associate",
+        "allowed_entrances": [
+            "Backend",
+        ],
         "areas": [
-            "Backend"
+            "Offloading area",
+        ]
+    },
+    {
+        "ID": 13,
+        "name": "Rebecca",
+        "status": "Active",
+        "role": "Maintenance",
+        "allowed_entrances": [
+            "Backend",
+            "Frontend",
+            "Elevator door",
+            "Elevator buttons",
+            "Reception door"
+        ],
+        "areas": [
+            "Storage room",
+            "Electrical room",
+            "Offices",
+        ]
+    },
+    {
+        "ID": 14,
+        "name": "James",
+        "status": "Active",
+        "role": "Associate",
+        "allowed_entrances": [
+            "Backend",
+        ],
+        "areas": [
+            "Onloading area",
         ]
     }
 ]
@@ -137,7 +229,9 @@ employees = [
 
 #2 Made it into a 'sign in as employee' program
 
-#Currently a Base authorization program for the warehouse.
+#3 A Base authorization program for the warehouse.
+
+#Currently Updated library making the location traversable throughout the warehouse.
 
 employee_id = int(input("Enter employee ID: "))
 
