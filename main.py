@@ -1,3 +1,6 @@
+from Warehouse_info import Entrance_guide, Starting_Location
+
+
 print("Warehouse-Authorization-Project")
 
 #list of employees
@@ -12,7 +15,6 @@ employees = [
             "Backend",
             "Reception door",
             "Elevator door",
-            "Elevator buttons",
             "Merge door"
         ],
         "areas": [
@@ -32,7 +34,6 @@ employees = [
             "Backend",
             "Merge door",
             "Elevator door",
-            "Elevator buttons",
             "Reception door"
         ],
         "areas": [
@@ -52,7 +53,6 @@ employees = [
             "Frontend",
             "Merge door",
             "Elevator door",
-            "Elevator buttons",
             "Reception door"
         ],
         "areas": [
@@ -69,7 +69,6 @@ employees = [
             "Frontend",
             "Merge door",
             "Elevator door",
-            "Elevator buttons",
             "Reception door"
         ],
         "areas": [
@@ -97,7 +96,6 @@ employees = [
         "allowed_entrances": [
             "Frontend",
             "Elevator door",
-            "Elevator buttons",
             "Reception door"
         ],
         "areas": [
@@ -112,7 +110,6 @@ employees = [
         "allowed_entrances": [
             "Frontend",
             "Elevator door",
-            "Elevator buttons",
             "Reception door"
         ],
         "areas": [
@@ -128,7 +125,6 @@ employees = [
             "Frontend",
             "Backend",
             "Elevator door",
-            "Elevator buttons",
             "Reception door"
         ],
         "areas": [
@@ -146,7 +142,6 @@ employees = [
             "Frontend",
             "Backend",
             "Elevator door",
-            "Elevator buttons",
             "Reception door"
         ],
         "areas": [
@@ -202,7 +197,6 @@ employees = [
             "Backend",
             "Frontend",
             "Elevator door",
-            "Elevator buttons",
             "Reception door"
         ],
         "areas": [
@@ -239,22 +233,56 @@ employee_exists = False
 current_employee = None
 
 for employee in employees:
+
     if employee["ID"] == employee_id:
         employee_exists = True
         print(employee)
+
         if employee["status"] == "Inactive":
             print(employee['name'] + " is inactive.")
+
         else:
             current_employee = employee
-            print("Welcome, " + current_employee['name'] + ".")
+            current_area = Starting_Location
+
+            while current_employee != None:
+                print("Welcome, " + current_employee['name'] + ".")
+
+                print("Current location: ", current_area)
+
+                print("Available entrances: ")
+
+                for entrance in Entrance_guide[current_area]:
+                    print(entrance)   
+                
+                current_entrances = current_employee["allowed_entrances"]
+
+                requested_access = input("Which entrance would you like to use? ")
+
+                if requested_access == "Logout":
+                    current_employee = None
+                    print("Logging out...")
+
+                elif current_area == "Elevator" and requested_access == "Elevator buttons":
+                    floor_options = Entrance_guide[current_area]["Elevator buttons"]
+
+                    for floor in floor_options:
+                        print(floor)
+
+                    floor_choice = input("Which floor would you like to go to? ")
+
+                    if floor_choice in floor_options:
+                        current_area = floor_options[floor_choice]
+                        print("Heading to " + current_area + "...")
+
+                elif requested_access in current_entrances:
+                    print("Going through " + requested_access + "..." )
+                    current_area = Entrance_guide[current_area][requested_access]
+
+                else:
+                    print("Access denied for " + requested_access + ".")
+
     else:
         continue
-    requested_area = input("Where would you like to go? ")
-    if requested_area in current_employee["areas"]:
-        print("Entering..." + requested_area)
-    else:
-        print("Cannot access " + requested_area + ".")
-
-
 if employee_exists == False:
     print("Employee does not exist.")

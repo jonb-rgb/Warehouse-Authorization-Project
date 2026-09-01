@@ -30,7 +30,6 @@ Entrances = [
     "Backend",
     "Merge door",
     "Reception door",
-    "Elevator buttons",
     "Elevator door",
 ]
 
@@ -49,11 +48,11 @@ Entrance_guide = {
         "Security room": "Security room",
     },
     "Elevator": {
-        "Elevator buttons": [
-            "Lobby",
-            "2nd Floor Lobby",
-            "3rd Floor Lobby",
-        ]
+        "Elevator buttons": {
+            "First floor": "Lobby",
+            "Second floor": "2nd Floor Lobby",
+            "Third floor": "3rd Floor Lobby",
+        }
     },
     "2nd Floor Lobby": {
         "Elevator door": "Elevator",
