@@ -46,6 +46,8 @@ Entrance_guide = {
     "Main Area": {
         "Merge door": "Lobby",
         "Security room": "Security room",
+        "Onloading area": "Onloading area",
+        "Offloading area": "Offloading area",
     },
     "Elevator": {
         "Elevator buttons": {

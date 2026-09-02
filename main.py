@@ -122,13 +122,9 @@ employees = [
         "status": "Active",
         "role": "Supervisor",
         "allowed_entrances": [
-            "Frontend",
             "Backend",
-            "Elevator door",
-            "Reception door"
         ],
         "areas": [
-            "Offices",
             "Offloading area",
             "Onloading area",
         ]
@@ -142,9 +138,11 @@ employees = [
             "Frontend",
             "Backend",
             "Elevator door",
-            "Reception door"
+            "Reception door",
+            "Merge door"
         ],
         "areas": [
+            "Lobby",
             "Offices",
             "Storage room",
             "Offloading area",
@@ -197,7 +195,8 @@ employees = [
             "Backend",
             "Frontend",
             "Elevator door",
-            "Reception door"
+            "Reception door",
+            "Merge door"
         ],
         "areas": [
             "Storage room",
@@ -225,7 +224,11 @@ employees = [
 
 #3 A Base authorization program for the warehouse.
 
-#Currently Updated library making the location traversable throughout the warehouse.
+#4 Updated library making the location traversable throughout the warehouse.
+
+#5 Made the elevator functional while restructuring how the logging in works.
+
+#6 Made a leave function along with being able to enter different areas with no other entrances.
 
 employee_id = int(input("Enter employee ID: "))
 
@@ -244,16 +247,29 @@ for employee in employees:
         else:
             current_employee = employee
             current_area = Starting_Location
+            last_area = None
 
             while current_employee != None:
                 print("Welcome, " + current_employee['name'] + ".")
-
                 print("Current location: ", current_area)
 
-                print("Available entrances: ")
+                if current_area in Entrance_guide:
+                    print("Available entrances: ")
 
-                for entrance in Entrance_guide[current_area]:
-                    print(entrance)   
+                    for entrance in Entrance_guide[current_area]:
+                        print(entrance)   
+
+                else:
+                    print("Available actions: ")
+                    print("Leave")
+
+                if current_area not in Entrance_guide:
+                    requested_access = input("Leave room?")
+
+                    if requested_access == "Leave":
+                        print("Leaving " + current_area + "...")
+                        current_area = last_area
+                        continue
                 
                 current_entrances = current_employee["allowed_entrances"]
 
@@ -268,7 +284,6 @@ for employee in employees:
 
                     for floor in floor_options:
                         print(floor)
-
                     floor_choice = input("Which floor would you like to go to? ")
 
                     if floor_choice in floor_options:
@@ -279,10 +294,15 @@ for employee in employees:
                     print("Going through " + requested_access + "..." )
                     current_area = Entrance_guide[current_area][requested_access]
 
+                elif requested_access in current_employee["areas"]:
+                    last_area = current_area
+                    current_area = Entrance_guide[current_area][requested_access]
+                    print("Entering " + current_area + "...")
+
                 else:
                     print("Access denied for " + requested_access + ".")
-
     else:
         continue
+
 if employee_exists == False:
     print("Employee does not exist.")
