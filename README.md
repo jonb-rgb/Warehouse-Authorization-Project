@@ -1,11 +1,79 @@
-This project is being made because I always thought that being able to change things in the physical world through technology was fascinating. This is not anything like that, but the concept of access control and authorization could be an interesting idea, and I currently work at a warehouse and thought it would be fun to make my own interpretation of how access control should be used for each worker based on their role or responsibilities in the company. This project will follow the principle that employees only have access to the needed areas to perform their jobs successfully.
--------------------------------------------------------------------------------------------------------------
-It has been a while since I've coded Python, so I've been relearning a lot of concepts while working on this and remembered how much I struggle with concepts, looking up how inputs work and how to program simple things like looking up a name with a for loop and if statements. The if statements were tricky, especially when it came to adding them with true and false logic while figuring out the difference between == and =. I didn't start this project to relearn Python but to program my own authorization engine, but it looks like I do need to relearn from the ground up.
--------------------------------------------------------------------------------------------------------------
-I feel like my progression is getting faster now that I'm understanding the concept more for Python. I went from a basic input search for employees by ID to being able to authorise employees to locations in a very basic sense. I'll expand on that more and eventually have the floor be something that has to be entered if it is based on the current floor the employee is at from the areas available from the floor they currently are at. The concept is what is driving me to understand and seek more of what I need to understand to see how far I can bring this project all together. I did struggle a bit with the syntax and spacing when dealing with the engine, and there was a lot of confusion with parent-child relationships with the variables, but it all started to make sense, and more of it keeps coming to me faster as I go.
---------------------------------------------------------------------------------------------------------------
-Restructuring the library was a lot more difficult than I thought it would be when I started today. I had to change the use of [] since it wasn't a normal list but instead {} to use it as a way for there to be order with certain areas and entrances inside the warehouse. I had to change how the concept works and make a new library for entrances for employees to eventually be able to move eventually inside the engine, which I will eventually have to restructure how the engine works as well. Coding the elevators was confusing at first, but then once I thought about it conceptually, the elevators made more sense on how they should function based on entrance. It was weird having to put smaller areas that were just a simple room since they didn't lead anywhere, but I made that to help with the engine when I add the previous location function into the engine. I added a starting location before adding more to the functionality in main.py. The starting location definition will give good footing when restructuring how employees will move around the building. It was a tedious task to get all the renaming back on every employee, but it helped me understand conceptually how the restrictions should work by adding allowed entrance and not only areas determine the employees authorization.
---------------------------------------------------------------------------------------------------------------
-Going deeper into access control logic is starting to show difficulty. It started showing when I was configuring how the elevators work, which was no easy task. The movement logic had to be restructured based on how the elevators work, but the logic behind the access control went further because once the elevator is accessed, the employees get to control where they go from there, so if they have access to the elevator, they have access to all floors and not to the one they are assigned to. I'm thinking of adding a key for access after pressing the button for now or maybe some sort of badge function instead since badges are more realistic than each employee having a key for each room they need to access.
---------------------------------------------------------------------------------------------------------------
-Going deeper into access control logic is starting to show difficulty. Making a leave option along with allowing being inside a room that doesn't give other "new" entrances is the next new task, but the issue I'm having is being able to leave means there has to be a past location that needs to be known as a variable for the employees to leave a room with no other entrances since doors aren't being considered entrances; only entrances are defined when there are other entrances to be accessed. It took me a while to understand that using a "not in" would be needed to make the engine understand that not only what is inside the entrance guide is needed, but also being able to enter an area and allowing it based off of restrictions as well. This all tied into how the leave function worked since current_area started to get tied into last_area. I put a print line under one of the assignment values that gave me a bug, but I figured it out pretty quickly based on the terminal output.
+Overview-
+This is a Python-based Warehouse simulator built to make an authorization engine the main topic for how access control would work in a real-world environment of a warehouse. This engine shows how, based on employee responsibilities, they are allowed and restricted in the areas of the warhouse. 
+
+I made this simulator to brush up on Python because I find it fascinating that technology can have real-world implications for the physical world. Not only does this help me get better at Python, but it also allows me to better understand why employees have certain permissions.
+
+
+Project Goals-
+The goal of this project is to be able to keep a clean system flowing, allowing people to be where they are supposed to be without having to worry about someone being where they aren't supposed to be. 
+
+This engine is able to show how there is employee-specific authorization with physical access restrictions.
+
+Having a function authorization engine working throughout the whole building.
+
+
+Current Features-
+-Being able to access the building from the outside using the ID from the main code file, you can choose any that has an active status to enter the building.
+
+-There is an elevator that works for those that have access to the second floor and beyond.
+
+-You can go from the frontend to the backend of the warehouse in the lobby.
+
+-The system tracks where you are as you move through the building.
+
+-Authorized employees can access elevator using elevator buttons to navigate between floors.
+
+-Access shows that employees are denied when attempting to enter a location based on authorization.
+
+-Employees remain logged in until they choose to log out from anywhere.
+
+
+Access Control Design-
+-First is there status check; if they are active, they may come in, if it is inactive, they are denied and stay outside the building.
+
+-Second is employees having the proper 'allowed_entrances' to go through entrances
+
+-Next would be if they are allowed in 'areas' because the room and entrances are considered different permissions.
+
+-Traveling is based on 'current_area', 'last_area'(for leaving a room), and 'Entrance_guide' (for lobby areas and the elevator function where there are several options for entrances).
+
+
+Project Structure-
+The 'main.py' will have the authorization engine, employee data, and the engine to explore around the building based on the employee you are logged in as.
+
+'Warehouse_info' is the library for 'Entrance_guide', 'Starting_Location', 'Entrances, 'Warehouse_Floors', and 'roles'.
+
+
+Running the program-
+Type 'py main.py' in the terminal.
+
+Enter ID when prompted.
+
+Navigate and test the permissions of the employee in the building.
+
+Type 'Logout' when finished.
+
+When you originally run 'main.py' there will be a prompt for a login ID, that is where the ID numbers in 'main.py' will be useful where the employee data is. 
+
+There are currently 1-14 IDs for different employees with different roles, entrance permissions, area permissions, and statuses. 
+
+Under the employee information, it shows what areas they are allowed along with if they are able to use the elevators or not. 
+
+You may enter rooms, but you can't do anything else except to leave the room and keep exploring the building.
+
+You can log out and see other permissions of another employee.
+
+
+Future plans-
+-audit log
+I'd like to have a list of people who have accessed certain areas like a long session outside of logging in to show different people working around the area.
+
+-more clear denial reason
+Giving clear denial reasons shows the user why they can't access an area
+
+-more detailed permissions
+More detailed permissions means the authorization system becomes more smarter and possibly more dynamic
+
+Jounral-
+There is a journal that talks about what I did and the problems I faced making this engine along with a more detailed reason as to why I made this engine.
+[Read the journal](Journal.md)
